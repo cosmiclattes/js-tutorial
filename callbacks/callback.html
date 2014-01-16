@@ -1,0 +1,21 @@
+<html>
+	<head>
+		<style>
+		</style>
+		<script src='../libs/jquery-2.0.2.min.js'></script>
+		<script>
+			$(function(){
+				var click = 0;
+				var incrementClicks = function(){
+					click ++;
+					alert(click);
+				};
+				$('#button').click(incrementClicks);
+			});
+		</script>
+	</head>
+	<body>
+		<h4>What is a callback ? Why should I care ?</h4>
+		<input id='button' type='submit' value='Click Me'></input>
+	</body>
+</html>
