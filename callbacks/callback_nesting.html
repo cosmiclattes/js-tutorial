@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<style>
+		</style>
+		<script src='../libs/jquery-2.0.2.min.js'></script>
+		<script>
+			$(function(){
+				var url = 'https://en.wikipedia.org/w/api.php?callback=?';
+	    		var postDict ={
+			        rvdir:'older',
+			        format:'json',
+			        action:'query',
+			        prop:'revisions',
+					titles:'JSON',
+			        rvprop:'user|timestamp|flags|ids|size',
+			        rvlimit:'max',
+		    	};
+				var callAPI = function(){
+					console.log('Before calling api');
+					var pageOldestEdits = $.getJSON(url,postDict,function(data){
+            			console.log('Got oldest edits from the  API',data);
+            			//console.log('After calling api');
+            		});
+            		postDict['rvdir'] = 'newer';
+            		var pageNewestEdits = $.getJSON(url,postDict,function(data){
+            			console.log('Got newest edits from the  API',data);
+            		});
+            		/*
+            		 var pageOldestEdits = $.getJSON(url,postDict,function(data){
+            			console.log('Got oldest edits from the  API',data);
+            			//console.log('After calling api');
+            		});
+            		postDict['rvdir'] = 'newer';
+            		var pageNewestEdits = $.getJSON(url,postDict,function(data){
+            			console.log('Got newest edits from the  API',data);
+            		});
+            		$.when(pageOldestEdits,pageNewestEdits).then(function(){
+            			console.log('Got the oldest and the newest edits');
+            		});
+            		 */
+					console.log('After calling api');
+				};
+				$('#button').click(callAPI);
+			});
+		</script>
+	</head>
+	<body>	
+		<h4>Lets talk to a server!</h4>
+		<input id='button' type='submit' value='Call API'></input>
+	</body>
+</html>
