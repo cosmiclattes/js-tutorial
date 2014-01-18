@@ -37,6 +37,13 @@
             		$.when(pageOldestEdits,pageNewestEdits).then(function(){
             			console.log('Got the oldest and the newest edits');
             		});
+            		
+            		//Getting the data from the json
+            		var resultKey = Object.keys(data.query.pages);
+	            	var revData = data.query.pages[resultKey].revisions;
+	            	for (elem in revData){
+	            		console.log(revData(elem));
+	            	}
             		 */
 					console.log('After calling api');
 				};
